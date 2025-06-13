@@ -8,6 +8,7 @@ services:
       npm run build --prefix client
       mkdir -p django_api/frontend
       cp -r client/dist/* django_api/frontend/
+      python manage.py migrate
       python manage.py collectstatic --noinput
     startCommand: gunicorn django_api.wsgi:application
     envVars:
