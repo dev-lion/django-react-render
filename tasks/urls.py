@@ -1,7 +1,8 @@
 from .views import RegisterView
 
 from django.urls import path, include
-from rest_framework.documentation import include_docs_urls
+#from rest_framework.documentation import include_docs_urls
+from rest_framework.schemas import get_schema_view
 from rest_framework import routers
 from tasks import views
 #api versioning
@@ -9,6 +10,12 @@ from tasks import views
 from .views import download_audio # para audio
 from .views import get_progress
 from .views import get_file
+
+schema_view = get_schema_view(
+    title="Tasks API",
+    description="API para gestionar tareas",
+    version="1.0.0"
+)
 
 # JWT views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -20,7 +27,8 @@ router.register(r'status-task', views.StatusTasklistView, 'status-task')
 
 urlpatterns = [
     path("api/v1/", include(router.urls)),  # queda /tasks/v1/...
-    path('docs/', include_docs_urls(title="Tasks API")),
+    #path('docs/', include_docs_urls(title="Tasks API")),
+    path('openapi/', schema_view, name='openapi-schema'),  # NUEVA DOC
 
     path('download/', download_audio, name='download_audio'),  # queda /tasks/download/
     path('progress/', get_progress, name='get_progress'),      # queda /tasks/progress/
