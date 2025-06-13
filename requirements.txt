@@ -21,3 +21,4 @@ uritemplate==4.1.1
 urllib3==2.3.0
 whitenoise==6.9.0
 yt-dlp==2025.5.22
+setuptools>=66.1.1
