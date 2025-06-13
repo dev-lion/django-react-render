@@ -19,6 +19,13 @@ from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 
+# tasks/views.py
+from django.views.generic import TemplateView
+
+class FrontendAppView(TemplateView):
+    template_name = "index.html"
+
+
 class TaskView(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
