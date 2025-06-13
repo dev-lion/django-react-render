@@ -136,6 +136,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'django_api' / 'frontend' ,  # ← Aquí los assets de Vite
+    BASE_DIR / 'django_api' / 'frontend' / 'assets',  # ← Aquí los assets de Vite
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Para collectstatic
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
