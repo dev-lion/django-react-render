@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: django-react-app
+    runtime: python
+    buildCommand: |
+      pip install -r requirements.txt
+      npm install --prefix client
+      npm run build --prefix client
+      mkdir -p django_api/frontend
+      cp -r client/dist/* django_api/frontend/
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn django_api.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: django_api.settings
+      - key: PYTHON_VERSION
+        value: 3.11
+    staticPublishPath: staticfiles

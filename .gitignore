@@ -1,0 +1,19 @@
+# Node
+node_modules/
+client/dist/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+myenv/
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+
+# General
+.env
+.DS_Store
+*.log
