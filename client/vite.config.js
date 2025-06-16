@@ -9,10 +9,5 @@ export default defineConfig({
     outDir: '../django_api/frontend/static', // 🔥 Copia los archivos donde Django pueda servirlos
     emptyOutDir: true,
   },
-  base: '/static/', // 👈 Esto es clave
-  build: {
-    outDir: '../django_api/frontend', // o como lo estás usando
-    emptyOutDir: true
-  }
 })
 
