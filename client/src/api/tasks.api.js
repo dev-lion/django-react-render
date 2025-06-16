@@ -1,11 +1,15 @@
 import axios from 'axios'
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
 const tasksApi = axios.create({
-    baseURL:'http://localhost:8000/tasks/api/v1/tasks/'
+    //baseURL:'http://localhost:8000/tasks/api/v1/tasks/'
+    baseURL: `${API_BASE}/tasks/api/v1/tasks/`
 })
 
 const statusTasksApi = axios.create({
-    baseURL:'http://localhost:8000/tasks/api/v1/status-task/'
+    //baseURL:'http://localhost:8000/tasks/api/v1/status-task/'
+    base : `${API_BASE}/tasks/api/v1/status-task/`
 })
 
 
@@ -40,8 +44,10 @@ console.log(getStatusTask);
 
 // Login con JWT
 export const login = (credentials) =>
-  axios.post("http://localhost:8000/tasks/token/", credentials);
+  //axios.post("http://localhost:8000/tasks/token/", credentials);
+  axios.post( `${API_BASE}/tasks/token/`, credentials);
+
 
 // Opcional: refresh de token si lo implementas
 export const refreshToken = (refresh) =>
-  axios.post("http://localhost:8000/tasks/token/refresh/", { refresh });
+  axios.post(`${API_BASE}/tasks/token/refresh/`, { refresh });
