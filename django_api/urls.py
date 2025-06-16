@@ -25,4 +25,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasks/', include('tasks.urls')),
     path('', FrontendAppView.as_view(), name='home'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
