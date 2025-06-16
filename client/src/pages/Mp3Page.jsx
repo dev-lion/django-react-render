@@ -13,7 +13,7 @@ export function Mp3Page() {
     const verifyFileReadyAndDownload = async () => {
         for (let i = 0; i < 10; i++) {
             console.log(`Intento ${i + 1}: verificando archivo...`);
-            const fileRes = await fetch(`http://localhost:8000/tasks/api/file/?download_id=${downloadId.current}`);
+            const fileRes = await fetch(`${API_BASE}/tasks/api/file/?download_id=${downloadId.current}`);
 
             if (fileRes.ok) {
                 const blob = await fileRes.blob();
