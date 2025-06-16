@@ -9,6 +9,11 @@ services:
       npm install --prefix client
       npm run build --prefix client
       
+      mkdir -p django_api/frontend/static
+      mkdir -p django_api/frontend/templates
+      cp -r client/dist/assets django_api/frontend/static/
+      cp client/dist/index.html django_api/frontend/templates/
+
       python manage.py migrate
       python manage.py collectstatic --noinput
     startCommand: gunicorn django_api.wsgi:application
