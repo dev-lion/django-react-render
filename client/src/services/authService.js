@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000/tasks';
+const API_URL = `${API_BASE}/tasks`;
 
 export async function login(username, password) {
     const res = await fetch(`${API_URL}/token/`, {
