@@ -19,6 +19,14 @@ from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 
+
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.http import JsonResponse
+
+@ensure_csrf_cookie
+def set_csrf_token(request):
+    return JsonResponse({'detail': 'CSRF cookie set'})
+
 # tasks/views.py
 from django.views.generic import TemplateView
 
