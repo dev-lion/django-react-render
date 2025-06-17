@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../services/authService';
+import { register } from '../services/authService';
 import { CustomButton } from '../components/CustomButton';
 
 export default function RegisterPage() {
@@ -14,7 +14,7 @@ export default function RegisterPage() {
     e.preventDefault();
     setError('');
 
-    const result = await registerUser({ username, email, password });
+    const result = await register({ username, email, password });
 
     if (result && result.id) {
       // Registro exitoso, redirigir al login

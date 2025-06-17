@@ -7,6 +7,7 @@ import { NavbarDark } from './components/NavbarDark'
 import { Mp3Page } from './pages/Mp3Page'
 import LoginPage from './pages/LoginPage'
 import PrivateRoute from './components/PrivateRoute';
+import RegisterPage from './pages/RegisterPage'; // 👈 Asegúrate de importar esto
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <Route path="/mp3Audio" element={<Mp3Page />} />
           </Route>
           <Route path="/" element={< Navigate to='/tasks' />} />
-          
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
         <Toaster />
