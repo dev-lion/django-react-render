@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasks/', include('tasks.urls')),
     path('', FrontendAppView.as_view(), name='frontend'),
+    re_path(r'^.*$', FrontendAppView.as_view(), name='frontend'),
     #re_path(r"^.*$", FrontendAppView.as_view()),  # todas las demás rutas van a React
 ]+ static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
