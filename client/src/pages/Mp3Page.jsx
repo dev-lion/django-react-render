@@ -88,7 +88,7 @@ export function Mp3Page() {
         clearInterval(pollingRef.current);  // Para evitar múltiples intervalos
 
         try {
-            const res = await fetch('http://localhost:8000/tasks/api/download/', {
+            const res = await fetch(`${API_BASE}/tasks/api/download/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ url: data.url }),
