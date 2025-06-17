@@ -8,6 +8,7 @@ export default defineConfig({
   build: {
     outDir: '../django_api/frontend/static', // 🔥 Copia los archivos donde Django pueda servirlos
     emptyOutDir: true,
+    manifest: true
   },
 })
 
