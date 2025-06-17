@@ -16,6 +16,7 @@ export function Navigation() {
       </Link>
 
       <div className="flex gap-4 items-center">
+        <Link to="/register" className="hover:underline">Registro</Link>
         <Link to="/mp3Audio" className="hover:underline">FLAC</Link>
         {isAuthenticated && (
           <>
