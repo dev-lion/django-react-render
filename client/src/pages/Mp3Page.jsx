@@ -23,6 +23,7 @@ export function Mp3Page() {
     const { register, handleSubmit, reset } = useForm();
     const [status, setStatus] = useState('');
     const [progress, setProgress] = useState('');
+    const [csrfToken, setCsrfToken] = useState('');
     const downloadId = useRef(null);
     const pollingRef = useRef(null);
 
@@ -134,9 +135,11 @@ export function Mp3Page() {
         fetch(`${API_BASE}/tasks/csrf/`, {
         credentials: 'include',
     }).then(()=> {
-        const token = getCookie('csrftoken');
-        console.log("CSRF Token recibido:", token);
-        setCsrfToken(token);
+        //const token = getCookie('csrftoken');
+        //console.log("CSRF Token recibido:", token);
+        //setCsrfToken(token);
+        setCsrfToken(getCookie('csrftoken'));
+        console.log("Token CSRF:", getCookie('csrftoken'));
     });
         return () => clearInterval(pollingRef.current);
     }, []);
