@@ -62,7 +62,7 @@ export function Mp3Page() {
         if (!downloadId.current) return;
 
         try {
-            const res = await fetch(`http://localhost:8000/tasks/api/progress/?download_id=${downloadId.current}`);
+            const res = await fetch(`${API_BASE}/tasks/api/progress/?download_id=${downloadId.current}`);
             const data = await res.json();
 
             if (res.ok) {
