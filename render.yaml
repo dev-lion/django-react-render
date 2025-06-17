@@ -17,6 +17,7 @@ services:
       mkdir -p django_api/frontend/templates
       
       cp django_api/frontend/static/index.html django_api/frontend/templates/
+      VITE_API_BASE_URL=https://django-react-render.onrender.com npm run build --prefix client
 
       python manage.py migrate
       python manage.py collectstatic --noinput
