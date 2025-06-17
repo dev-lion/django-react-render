@@ -17,8 +17,7 @@ services:
       mkdir -p django_api/frontend/templates
       
       cp -r client/dist/assets django_api/frontend/static/
-      cp client/dist/index.html django_api/frontend/templates/
-      
+      cp django_api/frontend/static/index.html django_api/frontend/templates/
 
       python manage.py migrate
       python manage.py collectstatic --noinput
