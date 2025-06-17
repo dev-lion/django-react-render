@@ -9,6 +9,8 @@ export function Mp3Page() {
     const downloadId = useRef(null);
     const pollingRef = useRef(null);
 
+    const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
     // Nueva función para verificar archivo listo y descargarlo
     const verifyFileReadyAndDownload = async () => {
         for (let i = 0; i < 10; i++) {
