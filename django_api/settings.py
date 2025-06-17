@@ -161,4 +161,5 @@ REST_FRAMEWORK = {
 
 CORS_EXPOSE_HEADERS = ['Content-Disposition']
 
-
+CSRF_COOKIE_HTTPONLY = False
+CSRF_TRUSTED_ORIGINS = ['https://django-react-render.onrender.com']

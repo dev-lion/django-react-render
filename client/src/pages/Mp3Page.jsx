@@ -108,7 +108,7 @@ export function Mp3Page() {
             const res = await fetch(`${API_BASE}/tasks/api/download/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 
-                    'X-CSRFToken': getCookie('csrftoken'),
+                    'X-CSRFToken': csrftoken,
 
                 },
                 credentials: 'include', // IMPORTANTE para enviar la cookie
@@ -133,6 +133,10 @@ export function Mp3Page() {
     useEffect(() => {
         fetch(`${API_BASE}/tasks/csrf/`, {
         credentials: 'include',
+    }).then(()=> {
+        const token = getCookie('csrftoken');
+        console.log("CSRF Token recibido:", token);
+        setCsrfToken(token);
     });
         return () => clearInterval(pollingRef.current);
     }, []);
