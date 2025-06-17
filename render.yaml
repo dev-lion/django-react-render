@@ -11,8 +11,9 @@ services:
       
       mkdir -p django_api/frontend/static
       mkdir -p django_api/frontend/templates
-      cp -r client/dist/assets django_api/frontend/static/
-      cp client/dist/index.html django_api/frontend/templates/
+      
+      cp -r django_api/frontend/vite_dist/assets django_api/frontend/static/
+      cp django_api/frontend/vite_dist/index.html django_api/frontend/templates/
       
 
       python manage.py migrate
