@@ -2,6 +2,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@material-tailwind/react": "^2.1.10",
-    "axios": "^1.9.0"
+    "axios": "^1.9.0",
+    "js-cookie": "^3.0.5"
   }
 }

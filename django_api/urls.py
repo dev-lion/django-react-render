@@ -19,6 +19,7 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from tasks.views import FrontendAppView  # o donde esté definida esa vista
+from .views import set_csrf_token
 
 
 urlpatterns = [
@@ -27,4 +28,5 @@ urlpatterns = [
     path('', FrontendAppView.as_view(), name='frontend'),
     re_path(r'^.*$', FrontendAppView.as_view(), name='frontend'),
     #re_path(r"^.*$", FrontendAppView.as_view()),  # todas las demás rutas van a React
+    path('csrf/', set_csrf_token),
 ]+ static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])

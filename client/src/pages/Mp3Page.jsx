@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { CustomButton } from '../components/CustomButton';
+import Cookies from 'js-cookie';
 
 export function Mp3Page() {
     const { register, handleSubmit, reset } = useForm();
@@ -90,7 +91,11 @@ export function Mp3Page() {
         try {
             const res = await fetch(`${API_BASE}/tasks/api/download/`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', 
+                    'X-CSRFToken': csrftoken,
+
+                },
+                credentials: 'include', // IMPORTANTE para enviar la cookie
                 body: JSON.stringify({ url: data.url }),
             });
 
@@ -110,6 +115,9 @@ export function Mp3Page() {
     };
 
     useEffect(() => {
+        fetch(`${API_BASE}/tasks/csrf/`, {
+        credentials: 'include',
+    });
         return () => clearInterval(pollingRef.current);
     }, []);
 
