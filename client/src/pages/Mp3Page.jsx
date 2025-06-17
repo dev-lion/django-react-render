@@ -109,7 +109,7 @@ export function Mp3Page() {
             const res = await fetch(`${API_BASE}/tasks/api/download/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 
-                    'X-CSRFToken': csrftoken,
+                    'X-CSRFToken': csrfToken,
 
                 },
                 credentials: 'include', // IMPORTANTE para enviar la cookie
