@@ -3,6 +3,22 @@ import { useForm } from 'react-hook-form';
 import { CustomButton } from '../components/CustomButton';
 import Cookies from 'js-cookie';
 
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + "=")) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
 export function Mp3Page() {
     const { register, handleSubmit, reset } = useForm();
     const [status, setStatus] = useState('');
@@ -82,7 +98,7 @@ export function Mp3Page() {
             setStatus('❌ Error: ' + error.message);
         }
     };
-
+    
     const onSubmit = async (data) => {
         setStatus('⏳ Iniciando descarga...');
         setProgress('');
@@ -92,7 +108,7 @@ export function Mp3Page() {
             const res = await fetch(`${API_BASE}/tasks/api/download/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 
-                    'X-CSRFToken': csrftoken,
+                    'X-CSRFToken': getCookie('csrftoken'),
 
                 },
                 credentials: 'include', // IMPORTANTE para enviar la cookie
