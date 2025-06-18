@@ -30,9 +30,9 @@ urlpatterns = [
     #path('docs/', include_docs_urls(title="Tasks API")),
     path('openapi/', schema_view, name='openapi-schema'),  # NUEVA DOC
 
-    path('download/', download_audio, name='download_audio'),  # queda /tasks/download/
-    path('progress/', get_progress, name='get_progress'),      # queda /tasks/progress/
-    path('file/', get_file),                                   # queda /tasks/file/
+    path('api/download/', download_audio, name='download_audio'),  # queda /tasks/download/
+    path('api/progress/', get_progress, name='get_progress'),      # queda /tasks/progress/
+    path('api/file/', get_file),                                   # queda /tasks/file/
 
     path('csrf/', set_csrf_token),
     # JWT views
