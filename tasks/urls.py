@@ -1,5 +1,5 @@
 from .views import RegisterView
-
+from .views import set_csrf_token
 from django.urls import path, include
 #from rest_framework.documentation import include_docs_urls
 from rest_framework.schemas import get_schema_view
@@ -34,6 +34,7 @@ urlpatterns = [
     path('progress/', get_progress, name='get_progress'),      # queda /tasks/progress/
     path('file/', get_file),                                   # queda /tasks/file/
 
+    path('csrf/', set_csrf_token),
     # JWT views
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),      # queda /tasks/token/
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),     # queda /tasks/token/refresh/

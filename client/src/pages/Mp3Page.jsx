@@ -135,11 +135,12 @@ export function Mp3Page() {
         fetch(`${API_BASE}/tasks/csrf/`, {
         credentials: 'include',
     }).then(()=> {
-        //const token = getCookie('csrftoken');
+        const token = getCookie('csrftoken');
         //console.log("CSRF Token recibido:", token);
-        //setCsrfToken(token);
-        setCsrfToken(getCookie('csrftoken'));
-        console.log("Token CSRF:", getCookie('csrftoken'));
+        setCsrfToken(token);
+        //setCsrfToken(getCookie('csrftoken'));
+        //console.log("Token CSRF:", getCookie('csrftoken'));
+        console.log("CSRF Token:", token);
     });
         return () => clearInterval(pollingRef.current);
     }, []);
