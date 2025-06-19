@@ -99,6 +99,10 @@ def download_audio(request):
                     elif d.get('status') == 'finished':
                         download_results[download_id]['progress'] = '100%'
                 cookie_path = os.path.join(settings.BASE_DIR, 'tasks', 'cookies.txt')
+
+                print(f"Cookies path: {cookie_path}")
+                print(f"File exists: {os.path.exists(cookie_path)}")
+                
                 ydl_opts = {
                     'format': 'bestaudio/best',
                     'postprocessors': [{
@@ -109,6 +113,8 @@ def download_audio(request):
                     'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
                     'progress_hooks': [progress_hook],
                     'cookiefile': cookie_path,
+                    'quiet': False,  # para ver más información
+                    'noplaylist': True
                     #'cookiefile': os.path.join(settings.BASE_DIR, 'cookies.txt'),
                     #'http_headers': {
                     #    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0',
