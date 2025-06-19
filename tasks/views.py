@@ -98,7 +98,7 @@ def download_audio(request):
                         download_results[download_id]['progress'] = d.get('_percent_str', '').strip()
                     elif d.get('status') == 'finished':
                         download_results[download_id]['progress'] = '100%'
-
+                cookie_path = os.path.join(settings.BASE_DIR, 'tasks', 'cookies.txt')
                 ydl_opts = {
                     'format': 'bestaudio/best',
                     'postprocessors': [{
@@ -108,7 +108,8 @@ def download_audio(request):
                     }],
                     'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
                     'progress_hooks': [progress_hook],
-                    'cookiefile': os.path.join(settings.BASE_DIR, 'cookies.txt'),
+                    'cookiefile': cookie_path,
+                    #'cookiefile': os.path.join(settings.BASE_DIR, 'cookies.txt'),
                     #'http_headers': {
                     #    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0',
                     #}
